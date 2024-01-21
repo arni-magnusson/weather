@@ -21,23 +21,23 @@ rome <- import("rome")
 seattle <- import("seattle")
 victoria <- import("victoria")
 
-# Construct list
-cities <- list(copenhagen=copenhagen,
-               fairbanks=fairbanks,
-               juneau=juneau,
-               new.bedford=new.bedford,
-               noumea=noumea,
-               reykjavik=reykjavik,
-               rome=rome,
-               seattle=seattle,
-               victoria=victoria)
+# Cities
+cities <- list("Copenhagen"=copenhagen,
+               "Fairbanks"=fairbanks,
+               "Juneau"=juneau,
+               "New Bedford"=new.bedford,
+               "Noumea"=noumea,
+               "Reykjavik"=reykjavik,
+               "Rome"=rome,
+               "Seattle"=seattle,
+               "Victoria"=victoria)
 
-# Average temperature
-temp <- data.frame(city=names(cities),
-                   summer.day=sapply(cities, \(x) max(x$Daily.max)),
-                   summer.night=sapply(cities, \(x) max(x$Daily.min)),
-                   winter.day=sapply(cities, \(x) min(x$Daily.max)),
-                   winter.night=sapply(cities, \(x) min(x$Daily.min)),
+# Temperature
+temp <- data.frame(City=names(cities),
+                   Summer.day=sapply(cities, \(x) max(x$Daily.max)),
+                   Summer.night=sapply(cities, \(x) max(x$Daily.min)),
+                   Winter.day=sapply(cities, \(x) min(x$Daily.max)),
+                   Winter.night=sapply(cities, \(x) min(x$Daily.min)),
                    row.names=NULL)
 
 # Write list and table
