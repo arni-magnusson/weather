@@ -4,5 +4,5 @@ library(TAF)
 
 mkdir("model")
 
-source("model_temp.R")
+source("model_temperature.R")
 source("model_uv.R")
