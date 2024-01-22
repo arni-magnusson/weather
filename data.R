@@ -1,16 +1,18 @@
 ## Preprocess data, write TAF data tables
 
-## Before: copenhagen.csv, fairbanks.csv, juneau.csv, new_bedford.csv,
-##         noumea.csv, reykjavik.csv, rome.csv, seattle.csv,
+## Before: coordinates.csv, copenhagen.csv, fairbanks.csv, juneau.csv,
+##         new_bedford.csv, noumea.csv, reykjavik.csv, rome.csv, seattle.csv,
 ##         victoria.csv (boot/data)
-## After:  cities.rds, temp.csv (data)
+## After:  cities.rds, coordinates.csv, temp.csv (data)
 
 library(TAF)
+library(gmt)
 source("utilities.R")
 
 mkdir("data")
 
 # Read data
+coordinates <- read.taf("boot/data/coordinates.csv")
 copenhagen <- import("copenhagen")
 fairbanks <- import("fairbanks")
 juneau <- import("juneau")
@@ -23,7 +25,11 @@ victoria <- import("victoria")
 new.bedford.sunshine <- read.taf("boot/data/new_bedford_sunshine.csv")
 noumea.humidity <- read.taf("boot/data/noumea_humidity.csv")
 
-# Fill in gaps
+# Convert coordinates from degree to numeric format
+coordinates$North <- round(deg2num(coordinates$Lat), 4)
+coordinates$East <- round(deg2num(coordinates$Lon), 4)
+
+# Fill in gaps: sunshine, humidity
 new.bedford$Sunshine.hours <- new.bedford.sunshine$Sunshine.hours *
   c(31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 noumea$Humidity <- noumea.humidity$Humidity
@@ -49,4 +55,5 @@ temp <- data.frame(City=names(cities),
 
 # Write list and table
 saveRDS(cities, "data/cities.rds")
+write.taf(coordinates, dir="data")
 write.taf(temp, dir="data")
