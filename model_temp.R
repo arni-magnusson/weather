@@ -19,4 +19,4 @@ temp <- data.frame(City=names(climate),
                    row.names=NULL)
 
 # Write TAF table
-write.taf(temp, dir="data")
+write.taf(temp, dir="model")
