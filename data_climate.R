@@ -1,9 +1,9 @@
 ## Preprocess climate data, write TAF data tables
 
 ## Before: copenhagen.csv, fairbanks.csv, juneau.csv, new_bedford.csv,
-##         noumea.csv, reykjavik.csv, rome.csv, seattle.csv,
-##         victoria.csv (boot/data)
-## After:  climate.rds, temp.csv (data)
+##         noumea.csv, noumea_humidity.csv, reykjavik.csv, rome.csv,
+##         seattle.csv, victoria.csv (boot/data)
+## After:  climate.rds (data)
 
 library(TAF)
 source("utilities.R")  # import_climate_wiki
@@ -38,14 +38,5 @@ climate <- list("Copenhagen"=copenhagen,
                 "Seattle"=seattle,
                 "Victoria"=victoria)
 
-# Temperature
-temp <- data.frame(City=names(climate),
-                   Summer.day=sapply(climate, \(x) max(x$Daily.max)),
-                   Summer.night=sapply(climate, \(x) max(x$Daily.min)),
-                   Winter.day=sapply(climate, \(x) min(x$Daily.max)),
-                   Winter.night=sapply(climate, \(x) min(x$Daily.min)),
-                   row.names=NULL)
-
-# Write list and table
+# Write list
 saveRDS(climate, "data/climate.rds")
-write.taf(temp, dir="data")
