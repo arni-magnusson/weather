@@ -20,8 +20,10 @@ reykjavik <- import("reykjavik")
 rome <- import("rome")
 seattle <- import("seattle")
 victoria <- import("victoria")
+noumea.humidity <- read.taf("boot/data/noumea_humidity.csv")
 
-# Cities
+# Combine data
+noumea$Humidity <- noumea.humidity$Humidity
 cities <- list("Copenhagen"=copenhagen,
                "Fairbanks"=fairbanks,
                "Juneau"=juneau,
