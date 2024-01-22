@@ -1,4 +1,4 @@
-## Preprocess geographic coordinate data, write TAF data tables
+## Preprocess geographic coordinates, write TAF data tables
 
 ## Before: coordinates.csv (boot/data)
 ## After:  coordinates.csv (data)
