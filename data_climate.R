@@ -21,13 +21,10 @@ rome <- import_climate_wiki("rome")
 seattle <- import_climate_wiki("seattle")
 victoria <- import_climate_wiki("victoria")
 
-# Read complimentary climate data: sunshine, humidity
-new.bedford.sunshine <- read.taf("boot/data/new_bedford_sunshine.csv")
+# Read complimentary climate data: humidity
 noumea.humidity <- read.taf("boot/data/noumea_humidity.csv")
 
-# Fill in gaps: sunshine, humidity
-new.bedford$Sunshine.hours <- new.bedford.sunshine$Sunshine.hours *
-  c(31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+# Fill in gaps: humidity
 noumea$Humidity <- noumea.humidity$Humidity
 
 # Construct list
