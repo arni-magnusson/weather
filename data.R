@@ -20,10 +20,15 @@ reykjavik <- import("reykjavik")
 rome <- import("rome")
 seattle <- import("seattle")
 victoria <- import("victoria")
+new.bedford.sunshine <- read.taf("boot/data/new_bedford_sunshine.csv")
 noumea.humidity <- read.taf("boot/data/noumea_humidity.csv")
 
-# Combine data
+# Fill in gaps
+new.bedford$Sunshine.hours <- new.bedford.sunshine$Sunshine.hours *
+  c(31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 noumea$Humidity <- noumea.humidity$Humidity
+
+# Construct list
 cities <- list("Copenhagen"=copenhagen,
                "Fairbanks"=fairbanks,
                "Juneau"=juneau,
