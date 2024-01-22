@@ -11,17 +11,19 @@ source("utilities.R")
 
 mkdir("data")
 
-# Read data
+# Read climate tables from Wikipedia
+copenhagen <- import_climate_wiki("copenhagen")
+fairbanks <- import_climate_wiki("fairbanks")
+juneau <- import_climate_wiki("juneau")
+new.bedford <- import_climate_wiki("new_bedford")
+noumea <- import_climate_wiki("noumea")
+reykjavik <- import_climate_wiki("reykjavik")
+rome <- import_climate_wiki("rome")
+seattle <- import_climate_wiki("seattle")
+victoria <- import_climate_wiki("victoria")
+
+# Read other data
 coordinates <- read.taf("boot/data/coordinates.csv")
-copenhagen <- import("copenhagen")
-fairbanks <- import("fairbanks")
-juneau <- import("juneau")
-new.bedford <- import("new_bedford")
-noumea <- import("noumea")
-reykjavik <- import("reykjavik")
-rome <- import("rome")
-seattle <- import("seattle")
-victoria <- import("victoria")
 new.bedford.sunshine <- read.taf("boot/data/new_bedford_sunshine.csv")
 noumea.humidity <- read.taf("boot/data/noumea_humidity.csv")
 

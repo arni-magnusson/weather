@@ -1,7 +1,7 @@
-## Import city
-## Example: reykjavik <- import("reykjavik")
+## Import climate table from Wikipedia
+## Example: reykjavik <- import_climate_wiki("reykjavik")
 
-import <- function(city)
+import_climate_wiki <- function(city)
 {
   path <- paste0("boot/data/", city, ".csv")
   x <- read.taf(path, row.names=1)
