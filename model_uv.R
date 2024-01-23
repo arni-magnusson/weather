@@ -1,7 +1,7 @@
 ## Run analysis of UV index, write model results
 
 ## Before: coordinates.csv, uv.rds (data)
-## After:  uv_avg.csv, uv_cities.csv, uv_max.csv (model)
+## After:  uv_cities.csv, uv_world_avg.csv, uv_world_max.csv (model)
 
 library(TAF)
 source("utilities.R")  # lookup_uv
@@ -18,11 +18,11 @@ uv.cities <- xtab2taf(uv.cities, "Month")
 
 # Calculate average and maximum UV index
 msg("  * calculating average UV by 0.5 deg squares")
-uv.avg <- aggregate(Index~North+East, uv, mean)
+uv.world.avg <- aggregate(Index~North+East, uv, mean)
 msg("  * calculating maximum UV by 0.5 deg squares")
-uv.max <- aggregate(Index~North+East, uv, max)
+uv.world.max <- aggregate(Index~North+East, uv, max)
 
 # Write TAF tables
-write.taf(uv.avg, dir="model")
 write.taf(uv.cities, dir="model")
-write.taf(uv.max, dir="model")
+write.taf(uv.world.avg, dir="model")
+write.taf(uv.world.max, dir="model")

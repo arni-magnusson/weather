@@ -1,6 +1,6 @@
 ## Prepare UV index plot for report
 
-## Before: uv_avg.csv, uv_cities.csv, uv_max.csv (output)
+## Before: uv_cities.csv, uv_world_avg.csv, uv_world_max.csv (output)
 ## After:  uv_cities.png, uv_world_avg.png, uv_world_max.png (report)
 
 library(TAF)
@@ -9,18 +9,19 @@ library(maps)
 mkdir("report")
 
 # Read data
+
 uv.cities <- read.taf("output/uv_cities.csv", row.names=1)
-uv.avg <- read.taf("output/uv_avg.csv")
-uv.max <- read.taf("output/uv_max.csv")
+uv.world.avg <- read.taf("output/uv_world_avg.csv")
+uv.world.max <- read.taf("output/uv_world_max.csv")
 
 # Reorder cities
 uv.cities <- uv.cities[,order(sapply(uv.cities, mean))]
 
 # Rearrange world surface
-surface.max <- xtabs(Index~East+North, uv.max)
-surface.avg <- xtabs(Index~East+North, uv.avg)
-xcoords <- as.numeric(rownames(surface.max))
-ycoords <- as.numeric(colnames(surface.max))
+surface.avg <- xtabs(Index~East+North, uv.world.avg)
+surface.max <- xtabs(Index~East+North, uv.world.max)
+xcoords <- as.numeric(rownames(surface.avg))
+ycoords <- as.numeric(colnames(surface.avg))
 
 # Plot UV index annual cycle for cities
 taf.png("uv_cities_cycle")
