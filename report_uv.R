@@ -37,7 +37,7 @@ dev.off()
 
 # Plot maximum UV index for cities
 taf.png("uv_cities_max")
-par(plt=c(0.18, 0.9475, 0.17, 0.8633))
+par(plt=c(0.1750, 0.9475, 0.1700, 0.8633))
 barplot(sapply(uv.cities, max), horiz=TRUE, las=TRUE, xlab="Maximum UV index",
         col=col.cities)
 dev.off()
