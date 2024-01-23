@@ -1,7 +1,8 @@
 ## Prepare climate plots for report
 
 ## Before: climate.rds (data)
-## After:  humidity.png (report)
+## After:  humidity.png, precipitation.png, precipitation_days.png,
+##         sunshine.png (report)
 
 library(TAF)
 
@@ -10,17 +11,15 @@ mkdir("report")
 # Read data
 climate <- readRDS("data/climate.rds")
 
-# Extract humidity
+# Extract climate variables
 humidity <- sapply(climate, function(x) x$Humidity)
 humidity <- sort(colMeans(humidity))
-
-# Extract precipitation
 prec <- sapply(climate, function(x) x$Precipitation)
 prec <- rev(sort(colSums(prec)))
-
-# Extract precipitation days
 precdays <- sapply(climate, function(x) x$Precipitation.days)
 precdays <- rev(sort(colSums(precdays)))
+sunshine <- sapply(climate, function(x) x$Sunshine.hours)
+sunshine <- rev(sort(colSums(sunshine)))
 
 # Plot humidity
 taf.png("humidity")
@@ -39,4 +38,10 @@ taf.png("precipitation_days")
 par(plt=c(0.1750, 0.9475, 0.1700, 0.8633))
 barplot(precdays, horiz=TRUE, las=1, xlab="Precipitation days per year",
         xlim=c(0,250))
+dev.off()
+
+# Plot sunshine
+taf.png("sunshine")
+par(plt=c(0.1750, 0.9475, 0.1700, 0.8633))
+barplot(sunshine, horiz=TRUE, las=1, xlab="Sunshine per year (hrs)")
 dev.off()
