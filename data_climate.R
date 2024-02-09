@@ -2,7 +2,7 @@
 
 ## Before: copenhagen.csv, fairbanks.csv, juneau.csv, new_bedford.csv,
 ##         noumea.csv, noumea_humidity.csv, reykjavik.csv, rome.csv,
-##         seattle.csv, victoria.csv,
+##         seattle.csv, st_johns.csv, victoria.csv,
 ##         victoria_precipitation_days.csv (boot/data)
 ## After:  climate.rds (data)
 
@@ -20,6 +20,7 @@ noumea <- import_climate_wiki("noumea")
 reykjavik <- import_climate_wiki("reykjavik")
 rome <- import_climate_wiki("rome")
 seattle <- import_climate_wiki("seattle")
+st.johns <- import_climate_wiki("st_johns")
 victoria <- import_climate_wiki("victoria")
 
 # Read complimentary climate data: humidity, precipitation days
@@ -40,6 +41,7 @@ climate <- list("Copenhagen"=copenhagen,
                 "Reykjavik"=reykjavik,
                 "Rome"=rome,
                 "Seattle"=seattle,
+                "St. John's"=st.johns,
                 "Victoria"=victoria)
 
 # Write list
