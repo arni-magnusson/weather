@@ -1,8 +1,8 @@
 ## Preprocess climate data, write TAF data tables
 
-## Before: copenhagen.csv, fairbanks.csv, juneau.csv, new_bedford.csv,
-##         noumea.csv, noumea_humidity.csv, reykjavik.csv, rome.csv,
-##         seattle.csv, st_johns.csv, victoria.csv,
+## Before: copenhagen.csv, fairbanks.csv, juneau.csv, noumea.csv,
+##         noumea_humidity.csv, reykjavik.csv, rome.csv, seattle.csv,
+##         st_johns.csv, victoria.csv,
 ##         victoria_precipitation_days.csv (boot/data)
 ## After:  climate.rds (data)
 
@@ -15,7 +15,6 @@ mkdir("data")
 copenhagen <- import_climate_wiki("copenhagen")
 fairbanks <- import_climate_wiki("fairbanks")
 juneau <- import_climate_wiki("juneau")
-new.bedford <- import_climate_wiki("new_bedford")
 noumea <- import_climate_wiki("noumea")
 reykjavik <- import_climate_wiki("reykjavik")
 rome <- import_climate_wiki("rome")
@@ -36,7 +35,6 @@ victoria$Precipitation.days <- victoria.precipitation.days$Precipitation.days
 climate <- list("Copenhagen"=copenhagen,
                 "Fairbanks"=fairbanks,
                 "Juneau"=juneau,
-                "New Bedford"=new.bedford,
                 "Noumea"=noumea,
                 "Reykjavik"=reykjavik,
                 "Rome"=rome,
