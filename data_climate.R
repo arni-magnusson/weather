@@ -2,8 +2,8 @@
 
 ## Before: copenhagen.csv, fairbanks.csv, juneau.csv, noumea.csv,
 ##         noumea_humidity.csv, reykjavik.csv, rome.csv, seattle.csv,
-##         st_johns.csv, victoria.csv,
-##         victoria_precipitation_days.csv (boot/data)
+##         st_johns.csv, victoria.csv, victoria_precipitation_days.csv,
+##         washington.csv (boot/data)
 ## After:  climate.rds (data)
 
 library(TAF)
@@ -21,6 +21,7 @@ rome <- import_climate_wiki("rome")
 seattle <- import_climate_wiki("seattle")
 st.johns <- import_climate_wiki("st_johns")
 victoria <- import_climate_wiki("victoria")
+washington <- import_climate_wiki("washington")
 
 # Read complimentary climate data: humidity, precipitation days
 noumea.humidity <- read.taf("boot/data/noumea_humidity.csv")
@@ -40,7 +41,8 @@ climate <- list("Copenhagen"=copenhagen,
                 "Rome"=rome,
                 "Seattle"=seattle,
                 "St. John's"=st.johns,
-                "Victoria"=victoria)
+                "Victoria"=victoria,
+                "Washington"=washington)
 
 # Write list
 saveRDS(climate, "data/climate.rds")
