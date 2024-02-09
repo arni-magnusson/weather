@@ -43,7 +43,7 @@ barplot(sapply(uv.cities, max), horiz=TRUE, las=TRUE, xlab="Maximum UV index",
 dev.off()
 
 # World map of maximum UV index
-taf.png("uv_world_avg")
+taf.png("uv_world_avg", 1600, 1000)
 image(xcoords, ycoords, surface.avg, ylim=c(-56, 72), col=col.uv,
       main="Average UV index",  xlab="", ylab="")
 map(add=TRUE)
@@ -52,7 +52,7 @@ points(North~East, coordinates)
 dev.off()
 
 # World map of maximum UV index
-taf.png("uv_world_max")
+taf.png("uv_world_max", 1600, 1000)
 image(xcoords, ycoords, surface.max, ylim=c(-56, 72), col=col.uv,
       main="Maximum UV index", xlab="", ylab="")
 map(add=TRUE)
