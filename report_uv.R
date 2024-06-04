@@ -28,7 +28,8 @@ ycoords <- as.numeric(colnames(surface.avg))
 
 # Color palettes
 col.uv <- colorRampPalette(c("#ffffff", "#e0c0b0", "#d06000", "#804000"))(20)
-col.cities <- rep(palette()[c(3, 7, 2)], c(4, 4, 2))
+col.cities <- findInterval(sapply(uv.cities, max), c(0,8,12))
+col.cities <- c(3, 7, 2)[col.cities]
 
 # Plot UV index annual cycle for cities
 taf.png("uv_cities_cycle")

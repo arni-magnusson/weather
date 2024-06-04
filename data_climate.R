@@ -1,6 +1,7 @@
 ## Preprocess climate data, write TAF data tables
 
-## Before: copenhagen.csv, fairbanks.csv, juneau.csv, noumea.csv,
+## Before: bozeman.csv, bozeman_humidity.csv, bozeman_sunshine.csv,
+##         copenhagen.csv, fairbanks.csv, juneau.csv, noumea.csv,
 ##         noumea_humidity.csv, reykjavik.csv, rome.csv, seattle.csv,
 ##         st_johns.csv, victoria.csv, victoria_precipitation_days.csv,
 ##         washington.csv (boot/data)
@@ -12,6 +13,7 @@ source("utilities.R")  # import_climate_wiki
 mkdir("data")
 
 # Read climate tables
+bozeman <- import_climate_wiki("bozeman")
 copenhagen <- import_climate_wiki("copenhagen")
 fairbanks <- import_climate_wiki("fairbanks")
 juneau <- import_climate_wiki("juneau")
@@ -24,16 +26,21 @@ victoria <- import_climate_wiki("victoria")
 washington <- import_climate_wiki("washington")
 
 # Read complimentary climate data: humidity, precipitation days
+bozeman.humidity <- import_climate_wiki("bozeman_humidity")
+bozeman.sunshine <- import_climate_wiki("bozeman_sunshine")
 noumea.humidity <- read.taf("boot/data/noumea_humidity.csv")
 victoria.precipitation.days <-
   read.taf("boot/data/victoria_precipitation_days.csv")
 
 # Fill in gaps: humidity
+bozeman$Humidity <- bozeman.humidity$Humidity
+bozeman$Sunshine.hours <- bozeman.sunshine$Sunshine.hours
 noumea$Humidity <- noumea.humidity$Humidity
 victoria$Precipitation.days <- victoria.precipitation.days$Precipitation.days
 
 # Construct list
-climate <- list("Copenhagen"=copenhagen,
+climate <- list("Bozeman"=bozeman,
+                "Copenhagen"=copenhagen,
                 "Fairbanks"=fairbanks,
                 "Juneau"=juneau,
                 "Noumea"=noumea,

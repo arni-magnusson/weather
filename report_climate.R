@@ -20,11 +20,12 @@ precipitation.days <- sapply(climate, \(x) x$Precipitation.days)
 precipitation.days <- rev(sort(colSums(precipitation.days)))
 sunshine <- sapply(climate, \(x) x$Sunshine.hours)
 sunshine <- rev(sort(colSums(sunshine)))
-snowfall <- sapply(c("Fairbanks","Juneau","Reykjavik","Seattle","St. John's",
-                     "Washington"), \(x) climate[[x]]$Snowfall)
+snowfall <- sapply(c("Bozeman","Fairbanks","Juneau","Reykjavik","Seattle",
+                     "St. John's","Washington"), \(x) climate[[x]]$Snowfall)
 snowfall <- rev(sort(colSums(snowfall)))
-snowy.days <- sapply(c("Copenhagen","Fairbanks","Juneau","Reykjavik","Seattle",
-                       "St. John's","Washington"), \(x) climate[[x]]$Snowy.days)
+snowy.days <- sapply(c("Bozeman","Copenhagen","Fairbanks","Juneau","Reykjavik",
+                       "Seattle","St. John's","Washington"),
+                     \(x) climate[[x]]$Snowy.days)
 snowy.days <- rev(sort(colSums(snowy.days)))
 
 # Plot humidity
