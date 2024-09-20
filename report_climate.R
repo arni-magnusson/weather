@@ -20,12 +20,11 @@ precipitation.days <- sapply(climate, \(x) x$Precipitation.days)
 precipitation.days <- sort(colSums(precipitation.days))
 sunshine <- sapply(climate, \(x) x$Sunshine.hours)
 sunshine <- sort(colSums(sunshine))
-snowfall <- sapply(c("Bozeman","Fairbanks","Juneau","Paris","Reykjavik",
-                     "Seattle","St. John's","Washington"),
-                   \(x) climate[[x]]$Snowfall)
+snowfall <- sapply(c("Fairbanks","Juneau","Paris","Reykjavik","Seattle",
+                     "St. John's","Washington"), \(x) climate[[x]]$Snowfall)
 snowfall <- sort(colSums(snowfall))
-snowy.days <- sapply(c("Bozeman","Copenhagen","Fairbanks","Juneau","Paris",
-                       "Reykjavik","Seattle","St. John's","Washington"),
+snowy.days <- sapply(c("Copenhagen","Fairbanks","Juneau","Paris","Reykjavik",
+                       "Seattle","St. John's","Washington"),
                      \(x) climate[[x]]$Snowy.days)
 snowy.days <- sort(colSums(snowy.days))
 
