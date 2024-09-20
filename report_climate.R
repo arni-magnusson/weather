@@ -15,18 +15,19 @@ climate <- readRDS("data/climate.rds")
 humidity <- sapply(climate, \(x) x$Humidity)
 humidity <- sort(colMeans(humidity))
 precipitation <- sapply(climate, \(x) x$Precipitation)
-precipitation <- rev(sort(colSums(precipitation)))
+precipitation <- sort(colSums(precipitation))
 precipitation.days <- sapply(climate, \(x) x$Precipitation.days)
-precipitation.days <- rev(sort(colSums(precipitation.days)))
+precipitation.days <- sort(colSums(precipitation.days))
 sunshine <- sapply(climate, \(x) x$Sunshine.hours)
-sunshine <- rev(sort(colSums(sunshine)))
-snowfall <- sapply(c("Bozeman","Fairbanks","Juneau","Reykjavik","Seattle",
-                     "St. John's","Washington"), \(x) climate[[x]]$Snowfall)
-snowfall <- rev(sort(colSums(snowfall)))
-snowy.days <- sapply(c("Bozeman","Copenhagen","Fairbanks","Juneau","Reykjavik",
-                       "Seattle","St. John's","Washington"),
+sunshine <- sort(colSums(sunshine))
+snowfall <- sapply(c("Bozeman","Fairbanks","Juneau","Paris","Reykjavik",
+                     "Seattle","St. John's","Washington"),
+                   \(x) climate[[x]]$Snowfall)
+snowfall <- sort(colSums(snowfall))
+snowy.days <- sapply(c("Bozeman","Copenhagen","Fairbanks","Juneau","Paris",
+                       "Reykjavik","Seattle","St. John's","Washington"),
                      \(x) climate[[x]]$Snowy.days)
-snowy.days <- rev(sort(colSums(snowy.days)))
+snowy.days <- sort(colSums(snowy.days))
 
 # Plot humidity
 taf.png("humidity")
