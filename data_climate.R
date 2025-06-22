@@ -1,9 +1,6 @@
 ## Preprocess climate data, write TAF data tables
 
-## Before: copenhagen.csv, fairbanks.csv, juneau.csv, noumea.csv,
-##         noumea_humidity.csv, paris.csv, paris_snowfall.csv, reykjavik.csv,
-##         rome.csv, seattle.csv, st_johns.csv, victoria.csv,
-##         victoria_precipitation_days.csv, washington.csv (boot/data)
+## Before: [cities].csv (boot/data)
 ## After:  climate.rds (data)
 
 library(TAF)
@@ -12,6 +9,7 @@ source("utilities.R")  # import_climate_wiki
 mkdir("data")
 
 # Read climate tables
+accra <- import_climate_wiki("accra")
 copenhagen <- import_climate_wiki("copenhagen")
 fairbanks <- import_climate_wiki("fairbanks")
 juneau <- import_climate_wiki("juneau")
@@ -36,7 +34,8 @@ paris$Snowfall <- paris.snowfall$Snowfall
 victoria$Precipitation.days <- victoria.precipitation.days$Precipitation.days
 
 # Construct list
-climate <- list("Copenhagen"=copenhagen,
+climate <- list("Accra"=accra,
+                "Copenhagen"=copenhagen,
                 "Fairbanks"=fairbanks,
                 "Juneau"=juneau,
                 "Noumea"=noumea,

@@ -17,7 +17,7 @@ uv.world.avg <- read.taf("output/uv_world_avg.csv")
 uv.world.max <- read.taf("output/uv_world_max.csv")
 
 # Reorder cities
-uv.cities <- uv.cities[,order(sapply(uv.cities, mean))]
+uv.cities <- uv.cities[,order(sapply(uv.cities, max))]
 coordinates <- coordinates[order(-abs(coordinates$North)),]
 
 # Rearrange world surface
