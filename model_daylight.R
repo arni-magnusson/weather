@@ -13,8 +13,9 @@ coordinates <- read.taf("data/coordinates.csv")
 
 # Calculate shortest day
 daylight <- coordinates
-daylight$Shortest.day <- sapply(daylight$North,
-                                function(x) min(DayLength(1:365, x)))
+daylight$Shortest.day <- suppressWarnings(
+  sapply(daylight$North, function(x) min(DayLength(1:365, x))))
+daylight$Shortest.day[is.nan(daylight$Shortest.day)] <- 0
 
 # Write TAF tables
 write.taf(daylight, dir="model")

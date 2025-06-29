@@ -21,10 +21,11 @@ precipitation.days <- sort(colSums(precipitation.days))
 sunshine <- sapply(climate, \(x) x$Sunshine.hours)
 sunshine <- sort(colSums(sunshine))
 snowfall <- sapply(c("Fairbanks","Juneau","Paris","Reykjavik","Seattle",
-                     "St. John's","Washington"), \(x) climate[[x]]$Snowfall)
+                     "St. John's","Tromso","Washington"),
+                   \(x) climate[[x]]$Snowfall)
 snowfall <- sort(colSums(snowfall))
 snowy.days <- sapply(c("Copenhagen","Fairbanks","Juneau","Paris","Reykjavik",
-                       "Seattle","St. John's","Washington"),
+                       "Seattle","St. John's","Tromso","Washington"),
                      \(x) climate[[x]]$Snowy.days)
 snowy.days <- sort(colSums(snowy.days))
 
@@ -44,21 +45,19 @@ dev.off()
 taf.png("precipitation_days")
 par(plt=c(0.1750, 0.9475, 0.1700, 0.8633))
 barplot(precipitation.days, horiz=TRUE, las=1,
-        xlab="Precipitation days per year", xlim=c(0, 250))
+        xlab="Precipitation days per year")
 dev.off()
 
 # Plot snowfall
 taf.png("snowfall")
 par(plt=c(0.1750, 0.9475, 0.1700, 0.8633))
-barplot(snowfall, horiz=TRUE, las=1, xlab="Snowfall per year (cm)",
-        xlim=c(0, 350))
+barplot(snowfall, horiz=TRUE, las=1, xlab="Snowfall per year (cm)")
 dev.off()
 
 # Plot snowy days
 taf.png("snowy_days")
 par(plt=c(0.1750, 0.9475, 0.1700, 0.8633))
-barplot(snowy.days, horiz=TRUE, las=1, xlab="Snowy days per year",
-        xlim=c(0, 80))
+barplot(snowy.days, horiz=TRUE, las=1, xlab="Snowy days per year")
 dev.off()
 
 # Plot sunshine

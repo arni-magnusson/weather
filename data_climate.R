@@ -19,18 +19,23 @@ reykjavik <- import_climate_wiki("reykjavik")
 rome <- import_climate_wiki("rome")
 seattle <- import_climate_wiki("seattle")
 st.johns <- import_climate_wiki("st_johns")
+tromso <- import_climate_wiki("tromso")
 victoria <- import_climate_wiki("victoria")
 washington <- import_climate_wiki("washington")
 
 # Read complimentary climate data
 noumea.humidity <- read.taf("boot/data/noumea_humidity.csv")
 paris.snowfall <- read.taf("boot/data/paris_snowfall.csv")
+tromso.atlas <- read.taf("boot/data/tromso_atlas.csv")
 victoria.precipitation.days <-
   read.taf("boot/data/victoria_precipitation_days.csv")
 
 # Fill in climate data gaps
 noumea$Humidity <- noumea.humidity$Humidity
 paris$Snowfall <- paris.snowfall$Snowfall
+tromso$Humidity <- tromso.atlas$Humidity
+tromso$Snowfall <- tromso.atlas$Snowfall
+tromso$Snowy.days <- tromso.atlas$Snowy.days
 victoria$Precipitation.days <- victoria.precipitation.days$Precipitation.days
 
 # Construct list
@@ -44,6 +49,7 @@ climate <- list("Accra"=accra,
                 "Rome"=rome,
                 "Seattle"=seattle,
                 "St. John's"=st.johns,
+                "Tromso"=tromso,
                 "Victoria"=victoria,
                 "Washington"=washington)
 
