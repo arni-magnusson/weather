@@ -10,7 +10,6 @@ library(maps)
 mkdir("report")
 
 # Read data
-
 coordinates <- read.taf("data/coordinates.csv")
 uv.cities <- read.taf("output/uv_cities.csv", row.names=1)
 uv.world.avg <- read.taf("output/uv_world_avg.csv")
