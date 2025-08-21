@@ -31,4 +31,6 @@ axis(1)
 axis(2, at=1:n, labels=rownames(temperature), las=1, tick=FALSE)
 axis(3)
 title(xlab="Temperature (C)")
+legend("topleft", c("Summer day","Summer night","Winter day","Winter night"),
+       pch=pch, col=1:4, bty="n", inset=0.02, y.intersp=1.25, cex=0.9)
 dev.off()
