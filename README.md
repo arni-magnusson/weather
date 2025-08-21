@@ -1,6 +1,6 @@
 # How's the Weather?
 
-Compare the climate between selected cities.
+Compare climate variables between selected cities.
 
 ## How to run
 
