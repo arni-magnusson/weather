@@ -63,5 +63,5 @@ dev.off()
 # Plot sunshine
 taf.png("sunshine")
 par(plt=c(0.1750, 0.9475, 0.1700, 0.8633))
-barplot(sunshine, horiz=TRUE, las=1, xlab="Sunshine per year (hrs)")
+barplot(sunshine, horiz=TRUE, las=1, xlab="Sunshine per year (hrs)", col="gold")
 dev.off()
